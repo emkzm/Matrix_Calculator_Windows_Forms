@@ -167,6 +167,8 @@ namespace Project1 {
 			// gridMatrix
 			// 
 			this->gridMatrix->AllowUserToAddRows = false;
+			this->gridMatrix->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->gridMatrix->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
 			this->gridMatrix->ColumnHeadersVisible = false;
 			this->gridMatrix->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
 			this->gridMatrix->Location = System::Drawing::Point(80, 0);
@@ -184,6 +186,7 @@ namespace Project1 {
 			// gridVector
 			// 
 			this->gridVector->AllowUserToAddRows = false;
+			this->gridVector->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->gridVector->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->gridVector->ColumnHeadersVisible = false;
 			this->gridVector->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->VECTOR });
@@ -268,6 +271,7 @@ namespace Project1 {
 			// gridMatrix2
 			// 
 			this->gridMatrix2->AllowUserToAddRows = false;
+			this->gridMatrix2->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->gridMatrix2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->gridMatrix2->ColumnHeadersVisible = false;
 			this->gridMatrix2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column2 });
@@ -329,6 +333,7 @@ namespace Project1 {
 			// gridResultMatrix
 			// 
 			this->gridResultMatrix->AllowUserToAddRows = false;
+			this->gridResultMatrix->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->gridResultMatrix->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->gridResultMatrix->ColumnHeadersVisible = false;
 			this->gridResultMatrix->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->dataGridViewTextBoxColumn2 });
@@ -383,10 +388,12 @@ namespace Project1 {
 			this->mtx_vec_mul_btn->TabIndex = 19;
 			this->mtx_vec_mul_btn->Text = L"MUL M1, V1";
 			this->mtx_vec_mul_btn->UseVisualStyleBackColor = true;
+			this->mtx_vec_mul_btn->Click += gcnew System::EventHandler(this, &MyForm::mtx_vec_mul_btn_Click);
 			// 
 			// gridVector2
 			// 
 			this->gridVector2->AllowUserToAddRows = false;
+			this->gridVector2->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->gridVector2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->gridVector2->ColumnHeadersVisible = false;
 			this->gridVector2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->dataGridViewTextBoxColumn3 });
@@ -424,6 +431,7 @@ namespace Project1 {
 			// gridResultVector
 			// 
 			this->gridResultVector->AllowUserToAddRows = false;
+			this->gridResultVector->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->gridResultVector->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->gridResultVector->ColumnHeadersVisible = false;
 			this->gridResultVector->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->dataGridViewTextBoxColumn4 });
@@ -448,6 +456,7 @@ namespace Project1 {
 			this->mtx_N_mul_btn->TabIndex = 24;
 			this->mtx_N_mul_btn->Text = L"MUL M1, N";
 			this->mtx_N_mul_btn->UseVisualStyleBackColor = true;
+			this->mtx_N_mul_btn->Click += gcnew System::EventHandler(this, &MyForm::mtx_N_mul_btn_Click);
 			// 
 			// vec1_vec2_sum_btn
 			// 
@@ -457,6 +466,7 @@ namespace Project1 {
 			this->vec1_vec2_sum_btn->TabIndex = 25;
 			this->vec1_vec2_sum_btn->Text = L"SUM V1, V2";
 			this->vec1_vec2_sum_btn->UseVisualStyleBackColor = true;
+			this->vec1_vec2_sum_btn->Click += gcnew System::EventHandler(this, &MyForm::vec1_vec2_sum_btn_Click);
 			// 
 			// vec1_vec2_sub_btn
 			// 
@@ -466,6 +476,7 @@ namespace Project1 {
 			this->vec1_vec2_sub_btn->TabIndex = 26;
 			this->vec1_vec2_sub_btn->Text = L"SUB V1, V2";
 			this->vec1_vec2_sub_btn->UseVisualStyleBackColor = true;
+			this->vec1_vec2_sub_btn->Click += gcnew System::EventHandler(this, &MyForm::vec1_vec2_sub_btn_Click);
 			// 
 			// vec1_vec2_scal_mul_btn
 			// 
@@ -475,6 +486,7 @@ namespace Project1 {
 			this->vec1_vec2_scal_mul_btn->TabIndex = 27;
 			this->vec1_vec2_scal_mul_btn->Text = L"SCALM V1, V2";
 			this->vec1_vec2_scal_mul_btn->UseVisualStyleBackColor = true;
+			this->vec1_vec2_scal_mul_btn->Click += gcnew System::EventHandler(this, &MyForm::vec1_vec2_scal_mul_btn_Click);
 			// 
 			// vec1_vec2_vec_mul_btn
 			// 
@@ -484,6 +496,7 @@ namespace Project1 {
 			this->vec1_vec2_vec_mul_btn->TabIndex = 28;
 			this->vec1_vec2_vec_mul_btn->Text = L"VECM V1, V2";
 			this->vec1_vec2_vec_mul_btn->UseVisualStyleBackColor = true;
+			this->vec1_vec2_vec_mul_btn->Click += gcnew System::EventHandler(this, &MyForm::vec1_vec2_vec_mul_btn_Click);
 			// 
 			// to_transpose_btn
 			// 
@@ -493,6 +506,7 @@ namespace Project1 {
 			this->to_transpose_btn->TabIndex = 29;
 			this->to_transpose_btn->Text = L"TRANSP M1";
 			this->to_transpose_btn->UseVisualStyleBackColor = true;
+			this->to_transpose_btn->Click += gcnew System::EventHandler(this, &MyForm::to_transpose_btn_Click);
 			// 
 			// to_find_rank_btn
 			// 
@@ -502,6 +516,7 @@ namespace Project1 {
 			this->to_find_rank_btn->TabIndex = 30;
 			this->to_find_rank_btn->Text = L"RANK M1";
 			this->to_find_rank_btn->UseVisualStyleBackColor = true;
+			this->to_find_rank_btn->Click += gcnew System::EventHandler(this, &MyForm::to_find_rank_btn_Click);
 			// 
 			// clr_all
 			// 
@@ -814,6 +829,7 @@ bool vector_to_table(vec source, System::Windows::Forms::DataGridView^ destinati
 		{
 			destination->Columns->Add("", "");
 		}
+		destination->Rows->Add(1);
 		for (int i = 0; i < destination->Columns->Count; i++)
 		{
 			destination->Rows[0]->Cells[i]->Value = source[i];
@@ -832,7 +848,7 @@ bool mtx_to_table(mtx source, System::Windows::Forms::DataGridView^ destination)
 	try
 	{
 		clear_table(destination);
-		for (int j = 0; j < source[0].size(); j++)
+		for (int i = 0; i < source[0].size(); i++)
 		{
 			destination->Columns->Add("", "");
 		}
@@ -867,8 +883,8 @@ bool table_to_vector(System::Windows::Forms::DataGridView^ source, vec& destinat
 			errorProvider->SetError(source, "Wrong data!");
 			return false;
 		}
-		destination.resize(source->ColumnCount);
-		for (int i = 0; i < source->ColumnCount; i++)
+		destination.resize(source->Columns->Count);
+		for (int i = 0; i < source->Columns->Count; i++)
 		{
 			destination[i] = Double::Parse(source->Rows[0]->Cells[i]->Value->ToString());
 		}
@@ -950,7 +966,7 @@ private: System::Void matrix_sum_btn_Click(System::Object^ sender, System::Event
 		mtx A, B, C;
 		table_to_mtx(gridMatrix, A);
 		table_to_mtx(gridMatrix2, B);
-		if (matrix_sum(A, B, C))
+		if (matrix_sum_matrix(A, B, C))
 		{
 			mtx_to_table(C, gridResultMatrix);
 		}
@@ -967,7 +983,7 @@ private: System::Void matrix_sub_btn_Click(System::Object^ sender, System::Event
 		mtx A, B, C;
 		table_to_mtx(gridMatrix, A);
 		table_to_mtx(gridMatrix2, B);
-		if (matrix_sub(A, B, C))
+		if (matrix_sub_matrix(A, B, C))
 		{
 			mtx_to_table(C, gridResultMatrix);
 		}
@@ -983,11 +999,126 @@ private: System::Void matrix_mul_btn_Click(System::Object^ sender, System::Event
 		mtx A, B, C;
 		table_to_mtx(gridMatrix, A);
 		table_to_mtx(gridMatrix2, B);
-		if (matrix_mul(A, B, C))
+		if (matrix_mul_matrix(A, B, C))
 		{
 			mtx_to_table(C, gridResultMatrix);
 		}
 		else puts("Wrong size of Matrix");
+	}
+	else return;
+}
+private: System::Void mtx_vec_mul_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridMatrix) && check_table(gridVector))
+	{
+		mtx A;
+		vec B, C;
+		table_to_mtx(gridMatrix, A);
+		table_to_vector(gridVector, B);
+		if (matrix_mul_vector(A, B, C))
+		{
+			vector_to_table(C, gridResultVector);
+		}
+		else puts("Wrong size of Matrix");
+	}
+	else return;
+}
+
+private: System::Void mtx_N_mul_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+	mtx_type n;
+
+	if (check_table(gridMatrix) && double::TryParse(numberN->Text->ToString(), n))
+	{
+		mtx A, C;
+		table_to_mtx(gridMatrix, A);
+		if (matrix_mul_n(A, n, C))
+		{
+			mtx_to_table(C, gridResultMatrix);
+		}
+	}
+	else return;
+}
+private: System::Void to_transpose_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+	
+	if (check_table(gridMatrix))
+	{
+		mtx A, C;
+		table_to_mtx(gridMatrix, A);
+		if (matrix_transpose(A, C))
+		{
+			mtx_to_table(C, gridResultMatrix);
+		}
+	}
+	else return;
+}
+private: System::Void to_find_rank_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridMatrix))
+	{
+		mtx A;
+		table_to_mtx(gridMatrix, A);
+		puts(matrix_rank(A).ToString());
+	}
+	else return;
+}
+private: System::Void vec1_vec2_sum_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridVector) && check_table(gridVector2))
+	{
+		vec A, B, C;
+		table_to_vector(gridVector, A);
+		table_to_vector(gridVector2, B);
+		if (vector_sum_vector(A, B, C))
+		{
+			vector_to_table(C, gridResultVector);
+		}
+	}
+	else return;
+}
+private: System::Void vec1_vec2_sub_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridVector) && check_table(gridVector2))
+	{
+		vec A, B, C;
+		table_to_vector(gridVector, A);
+		table_to_vector(gridVector2, B);
+		if (vector_sub_vector(A, B, C))
+		{
+			vector_to_table(C, gridResultVector);
+		}
+	}
+	else return;
+}
+private: System::Void vec1_vec2_scal_mul_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridVector) && check_table(gridVector2))
+	{
+		vec A, B, C;
+		table_to_vector(gridVector, A);
+		table_to_vector(gridVector2, B);
+		puts(vector_dot_vector(A, B).ToString());
+	}
+	else return;
+}
+private: System::Void vec1_vec2_vec_mul_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridVector) && check_table(gridVector2))
+	{
+		vec A, B, C;
+		table_to_vector(gridVector, A);
+		table_to_vector(gridVector2, B);
+		if (vector_cross_vector(A, B, C))
+		{
+			vector_to_table(C, gridResultVector);
+		}
 	}
 	else return;
 }

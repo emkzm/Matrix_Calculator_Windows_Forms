@@ -7,7 +7,7 @@ using std::endl;
 typedef std::vector<std::vector<mtx_type>> mtx;
 typedef std::vector<mtx_type> vec;
 
-bool matrix_sum(mtx m1, mtx m2, mtx& destination)
+bool matrix_sum_matrix(mtx m1, mtx m2, mtx& destination)
 {
 	if (m1.size() == 0 || m2.size() == 0) return false;
 	if (m1.size() != m2.size()) return false;
@@ -25,7 +25,7 @@ bool matrix_sum(mtx m1, mtx m2, mtx& destination)
 	return true;
 }
 
-bool matrix_sub(mtx m1, mtx m2, mtx& destination)
+bool matrix_sub_matrix(mtx m1, mtx m2, mtx& destination)
 {
 	if (m1.size() == 0 || m2.size() == 0) return false;
 	if (m1.size() != m2.size()) return false;
@@ -41,7 +41,7 @@ bool matrix_sub(mtx m1, mtx m2, mtx& destination)
 	}
 	return true;
 }
-bool matrix_mul(mtx m1, mtx m2, mtx& destination)
+bool matrix_mul_matrix(mtx m1, mtx m2, mtx& destination)
 {
 	if (m1.size() == 0 || m2.size() == 0) return false;
 	if (m1[0].size() != m2.size()) return false;
@@ -62,9 +62,28 @@ bool matrix_mul(mtx m1, mtx m2, mtx& destination)
 	return true;
 }
 
-bool matrix_mul_n(mtx source, int n, mtx& destination)
+bool matrix_mul_vector(mtx m, vec v, vec& destination)
+{
+	if (m.size() == 0 || v.size() == 0) return false;
+	if (m[0].size() != v.size()) return false;
+	destination.resize(m.size());
+	for (int i = 0; i < m.size(); i++)
+	{
+		mtx_type sum = 0;
+		for (int j = 0; j < m[0].size(); j++)
+		{
+			sum += m[i][j] * v[j];
+		}
+		destination[i] = sum;
+	}
+	return true;
+}
+
+
+bool matrix_mul_n(mtx source, mtx_type n, mtx& destination)
 {
 	if (source.size() == 0) return false;
+	destination.resize(source.size());
 	for (int i = 0; i < source.size(); i++)
 	{
 		destination[i].resize(source[i].size());
@@ -134,18 +153,32 @@ int matrix_rank(mtx A)
 	return rank;
 }
 
-bool vector_sum(vec v1, vec v2, vec& destination)
+bool vector_sum_vector(vec v1, vec v2, vec& destination)
 {
 	if (v1.size() == 0 || v2.size() == 0) return false;
 	if (v1.size() != v2.size()) return false;
+
+	destination.resize(v1.size());
 	for (int i = 0; i < v1.size(); i++)
 	{
 		destination[i] = v1[i] + v2[i];
 	}
 	return true;
 }
+
+bool vector_sub_vector(vec v1, vec v2, vec& destination)
+{
+	if (v1.size() == 0 || v2.size() == 0) return false;
+	if (v1.size() != v2.size()) return false;
+	destination.resize(v1.size());
+	for (int i = 0; i < v1.size(); i++)
+	{
+		destination[i] = v1[i] - v2[i];
+	}
+	return true;
+}
 // скалярное произведение векторов
-mtx_type vector_dot(vec v1, vec v2)
+mtx_type vector_dot_vector(vec v1, vec v2)
 {
 	if (v1.size() == 0 || v2.size() == 0) return 0;
 	if (v1.size() != v2.size()) return 0;
@@ -157,9 +190,13 @@ mtx_type vector_dot(vec v1, vec v2)
 	return sum;
 }
 // векторное произведение векторов
-bool vector_cross(vec v1, vec v2, vec& destination)
+bool vector_cross_vector(vec v1, vec v2, vec& destination)
 {
 	if (v1.size() == 0 || v2.size() == 0) return false;
-	if (v1.size() != v2.size()) return false;
+	if (v1.size() != v2.size() && v1.size() != 3) return false; // i dont know how to calculate cross product for vectors that size is bigger then 3 
+	destination.resize(v1.size());
+	destination[0] = v1[1] * v2[2] - v1[2] * v2[1];
+	destination[1] = v1[0] * v2[2] - v1[2] * v2[0];
+	destination[2] = v1[0] * v2[1] - v1[1] * v2[0];
 	return true;
 }
