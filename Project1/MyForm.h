@@ -373,6 +373,7 @@ namespace Project1 {
 			this->matrix_mul_btn->TabIndex = 18;
 			this->matrix_mul_btn->Text = L"MUL M1, M2";
 			this->matrix_mul_btn->UseVisualStyleBackColor = true;
+			this->matrix_mul_btn->Click += gcnew System::EventHandler(this, &MyForm::matrix_mul_btn_Click);
 			// 
 			// mtx_vec_mul_btn
 			// 
@@ -923,8 +924,26 @@ bool table_to_mtx(System::Windows::Forms::DataGridView ^source, mtx& destination
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-private: System::Void matrix_sum_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void clr_all_Click(System::Object^ sender, System::EventArgs^ e) {
+	clear_table(gridMatrix);
+	clear_table(gridMatrix2);
+	clear_table(gridResultMatrix);
+	clear_table(gridResultVector);
+	clear_table(gridVector);
+	clear_table(gridVector2);
 	errorProvider->Clear();
+	numberN->Text = "";
+}
+
+void virtual fast_clear()
+{
+	clear_table(gridResultMatrix);
+	clear_table(gridResultVector);
+	errorProvider->Clear();
+}
+
+private: System::Void matrix_sum_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
 	
 	if (check_table(gridMatrix) && check_table(gridMatrix2))
 	{
@@ -940,20 +959,37 @@ private: System::Void matrix_sum_btn_Click(System::Object^ sender, System::Event
 	else return;
 }
 
-
-private: System::Void clr_all_Click(System::Object^ sender, System::EventArgs^ e) {
-	clear_table(gridMatrix);
-	clear_table(gridMatrix2);
-	clear_table(gridResultMatrix);
-	clear_table(gridResultVector);
-	clear_table(gridVector);
-	clear_table(gridVector2);
-	errorProvider->Clear();
-	numberN->Text = "";
-}
-
-	   
 private: System::Void matrix_sub_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridMatrix) && check_table(gridMatrix2))
+	{
+		mtx A, B, C;
+		table_to_mtx(gridMatrix, A);
+		table_to_mtx(gridMatrix2, B);
+		if (matrix_sub(A, B, C))
+		{
+			mtx_to_table(C, gridResultMatrix);
+		}
+		else puts("Wrong size of Matrix");
+	}
+	else return;
+}
+private: System::Void matrix_mul_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	fast_clear();
+
+	if (check_table(gridMatrix) && check_table(gridMatrix2))
+	{
+		mtx A, B, C;
+		table_to_mtx(gridMatrix, A);
+		table_to_mtx(gridMatrix2, B);
+		if (matrix_mul(A, B, C))
+		{
+			mtx_to_table(C, gridResultMatrix);
+		}
+		else puts("Wrong size of Matrix");
+	}
+	else return;
 }
 };
 
